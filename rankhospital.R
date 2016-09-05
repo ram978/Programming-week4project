@@ -19,14 +19,12 @@ rankhospital <- function(state, outcome, num = "best"){
     x <-4
   } else if(outcome == "pneumonia") {
     x <-3
-  }#outcome_heart_attack <- outcome_need[, c("Hospital.Name", "State", "Heart.Failure")]
+  }
   state_set=subset(outcome_need, outcome_need$State == state)
   View(state_set)
   state_set[,x] <- as.numeric(state_set[,x])
   orderdata <- state_set[order(state_set[, x], state_set[, 1], na.last = NA), ]
-  #min_of_state <- min(state_set[,x], na.rm = TRUE)
-  #result_set <- subset(state_set,state_set[,x]  == min_of_state)
-  #result_set$Hospital.Name
+  
   if(num == "best") {
     orderdata[1, 2]
   } else if(num == "worst") {
